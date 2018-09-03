@@ -1,6 +1,5 @@
 const jsonURL = "https://art-decoder.bienal.berinfontes.com/api/collection/1/?format=json"
 const jsonURLcrop = "https://art-decoder.bienal.berinfontes.com/api/collection/"
-
 const jsonCollections = "https://art-decoder.bienal.berinfontes.com/api/collection/?format=json"
 
 
@@ -13,12 +12,12 @@ const vm = new Vue({
         value: 0,
         search: '',
         lowPoint: 1,
-        highPoint: 10,
+        highPoint: 3,
         turkResults: [],
         workResults: [],
     },
     mounted() {
-        this.getResults();
+        this.changeCollection();
         this.getCollections();
     },
     methods: {
@@ -36,9 +35,13 @@ const vm = new Vue({
 
             }).catch( error => { console.log(error); });
         },
+
+        //all this lowpoint and highpoint thing is due to the fact that there is no collection 1,
+        // because we deleted. but we wanted there to be stuff immediately when someone accessed this page.
         changeCollection() {
             this.results = [];
-            axios.get(jsonURLcrop + this.lowPoint + "/?format=json").then((response) => {
+            this.highPoint = parseInt(this.lowPoint) + 1;
+            axios.get(jsonURLcrop + this.highPoint + "/?format=json").then((response) => {
                 preRes =  response.data;
                 this.results =  preRes;
             }).catch( error => { console.log(error); });
