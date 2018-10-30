@@ -377,6 +377,8 @@
                                         <tbody>
 
                                         <div v-if="result.ibmwatson.main">
+                                        <div v-if="result.ibmwatson.main.classifiers">
+
                                         <tr  v-for="(categ, categind) in result.ibmwatson.main.classifiers[0].classes">
 
 
@@ -391,6 +393,7 @@
                                                     </div></th>
                                         </tr>
                                         </div>
+                                            </div>
                                         </tbody>
                                         </table>
 
