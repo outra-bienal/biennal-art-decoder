@@ -67,7 +67,7 @@
         <!--Header = Microsoft Azure Caption-->
         <div class="card border-secondary mt-1" style="width: 100%;">
             <div class="card-header">
-                <div v-if="result.microsoftazure">
+                <div v-if="result.microsoftazure.main">
                     <div v-if="result.microsoftazure.main.description">
                         <div v-if="result.microsoftazure.main.description.captions[0]" style="display:flex; align-items: baseline;">
                             <h4 class="mr-2 text-success" > #{{ index+1 }} </h4>
@@ -247,7 +247,7 @@
                                 </div>
 
                                 <!--MICROSOFT RESULTS-->
-                                <div class="tab-pane fade" v-if="result.microsoftazure" :id="'nav-microsoft' + index" role="tabpanel" aria-labelledby="nav-microsoft-tab">
+                                <div class="tab-pane fade" v-if="result.microsoftazure.main" :id="'nav-microsoft' + index" role="tabpanel" aria-labelledby="nav-microsoft-tab">
 
                                     <!--This row displays Microsoft Adult Content Result-->
                                     <div class="row" v-if="result.microsoftazure.main.adult">
