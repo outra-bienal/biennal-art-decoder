@@ -3,6 +3,7 @@ const jsonURLcrop = "https://art-decoder.bienal.berinfontes.com/api/collection/"
 const jsonCollections = "https://art-decoder.bienal.berinfontes.com/api/collection/?format=json"
 
 
+Vue.use(VueLazyload)
 
 const vm = new Vue({
     el: '#app',

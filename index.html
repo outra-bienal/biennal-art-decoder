@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/othercustomm.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 
-
+    <script src="https://unpkg.com/vue-lazyload/vue-lazyload.js"></script>
 </head>
 
 <body >
@@ -96,7 +96,7 @@
                         <div class="col">
                             <p class="card-text">
                                 <a v-bind:href="result.image" data-toggle="lightbox">
-                                    <img id="whatever" class="img-fluid" v-bind:src="result.image" width="500"/>
+                                    <img id="whatever" class="img-fluid lazy" v-lazy="result.image" width="500"/>
                                 </a>
                             </p>
                         </div>
@@ -194,7 +194,7 @@
                                         <div class="col-md-auto"  v-for="(categ, categind) in result.googlecloud.webDetection.visuallySimilarImages">
                                             <div style="display:flex; align-items: baseline;">
                                                 <a v-bind:href="categ.url" data-toggle="lightbox">
-                                                    <img v-bind:src="categ.url" height="50">
+                                                    <img class="lazy" v-lazy="categ.url" height="50">
                                                 </a>
                                             </div>
                                         </div>
@@ -412,14 +412,14 @@
                                 <!--YOLO RESULTS-->
                                 <div  class="tab-pane fade"  :id="'nav-yolo' + index" role="tabpanel" aria-labelledby="nav-yolo">
                                     <a v-bind:href="result.yolo_image" data-toggle="lightbox">
-                                        <img v-bind:src="result.yolo_image"  class="img-fluid" alt="Responsive image">
+                                        <img v-lazy="result.yolo_image" class="img-fluid lazy" alt="Responsive image">
                                     </a>
                                 </div>
 
                                 <!--DETECTRON RESULTS-->
                                 <div  class="tab-pane fade"  :id="'nav-dete' + index" role="tabpanel" aria-labelledby="nav-dete">
                                     <a v-bind:href="result.yolo_image" data-toggle="lightbox">
-                                        <img v-bind:src="result.detectron_image"  class="img-fluid" alt="If no image shows up, either no detection happened or the algorithm wasn't run for this image.">
+                                        <img v-lazy="result.detectron_image"  class="img-fluid lazy" alt="If no image shows up, either no detection happened or the algorithm wasn't run for this image.">
                                     </a>
                                 </div>
 
@@ -520,7 +520,7 @@
                                 <div  class="tab-pane fade"  :id="'nav-dens' + index" role="tabpanel" aria-labelledby="nav-dens">
 
                                     <a v-bind:href="result.dense_cap_image" data-toggle="lightbox">
-                                        <img v-bind:src="result.dense_cap_image"  class="img-fluid" alt="Responsive image">
+                                        <img v-lazy="result.dense_cap_image"  class="img-fluid lazy" alt="Responsive image">
                                     </a>
 
 
