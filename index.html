@@ -35,13 +35,13 @@
 
 
 
-                <h7> Collection #</h7>
+                <span> Collection #</span>
                 <div class="col-3" style="display: block">
                     <input id="lowP" class="form-control form-control-sm" type="text" v-model="lowPoint" placeholder="X" aria-label="High" style="display: inline-block">
                 </div>
                 <div style="display:flex; align-items: baseline;">
                     <button style="display: inline-block" v-on:click="changeCollection">Ok</button>
-                    <h7 style="display:flex; align-items: baseline; color: #eaf1f1" v-if="results.images"> has {{results    .images.length}} results.</h7>
+                    <span style="display:flex; align-items: baseline; color: #eaf1f1" v-if="results.images"> has {{results    .images.length}} results.</span>
 
                 </div>
 
@@ -578,9 +578,6 @@
         event.preventDefault();
         $(this).ekkoLightbox();
     });
-
-
-
 </script>
 
 
