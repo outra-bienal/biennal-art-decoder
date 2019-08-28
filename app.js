@@ -17,7 +17,6 @@ const vm = new Vue({
         workResults: [],
     },
     mounted() {
-        this.changeCollection();
         this.getCollections();
     },
     methods: {
