@@ -30,19 +30,18 @@
 
 
                 <div class="nav-item pr-4">
-                    <u><a class="nav-link" href="collections.html">Collection List</a></u>
+                    <u><a class="nav-link" href="collections.html" target="_blank">Collection List</a></u>
                 </div>
 
 
 
                 <h7> Collection #</h7>
-                <div class="col-3">
-
-                    <input id="lowP" class="form-control form-control-sm" type="text" v-model="lowPoint" placeholder="X" v-on:keyup="changeCollection" aria-label="High">
+                <div class="col-3" style="display: block">
+                    <input id="lowP" class="form-control form-control-sm" type="text" v-model="lowPoint" placeholder="X" aria-label="High" style="display: inline-block">
                 </div>
                 <div style="display:flex; align-items: baseline;">
-                    <h7  style="display:flex; align-items: baseline; color: #eaf1f1" v-if="results.images"> has {{results.images.length}} results.</h7>
-                    <h7 style="display:flex; align-items: baseline; color: #eaf1f1" v-else>is loading or has no results.</h7>
+                    <button style="display: inline-block" v-on:click="changeCollection">Ok</button>
+                    <h7 style="display:flex; align-items: baseline; color: #eaf1f1" v-if="results.images"> has {{results    .images.length}} results.</h7>
 
                 </div>
 
