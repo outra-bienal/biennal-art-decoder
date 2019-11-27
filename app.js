@@ -1,4 +1,5 @@
-const jsonURL = "https://art-decoder.bienal.berinfontes.com/api/collection/1/?format=json"
+//const jsonURL = "https://art-decoder.bienal.berinfontes.com/api/collection/1/?format=json"
+const jsonURL = "./bienal_34.json"
 const jsonURLcrop = "https://art-decoder.bienal.berinfontes.com/api/collection/"
 const jsonCollections = "https://art-decoder.bienal.berinfontes.com/api/collection/?format=json"
 
@@ -41,7 +42,7 @@ const vm = new Vue({
         changeCollection() {
             this.results = [];
             this.highPoint = parseInt(this.lowPoint) + 1;
-            axios.get(jsonURLcrop + this.highPoint + "/?format=json").then((response) => {
+            axios.get("bienal_34.json"/*jsonURLcrop + this.highPoint + "/?format=json"*/).then((response) => {
                 preRes =  response.data;
                 this.results =  preRes;
             }).catch( error => { console.log(error); });
@@ -93,3 +94,6 @@ const vm = new Vue({
         }
     }
 });
+
+//change to the first collection when site is loaded
+vm.changeCollection()

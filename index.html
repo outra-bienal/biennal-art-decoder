@@ -42,7 +42,6 @@
                 <div style="display:flex; align-items: baseline;">
                     <button style="display: inline-block" v-on:click="changeCollection">Ok</button>
                     <span style="display:flex; align-items: baseline; color: #eaf1f1" v-if="results.images"> has {{results    .images.length}} results.</span>
-
                 </div>
 
 
@@ -115,6 +114,8 @@
                                     <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-yolo' + index" role="tab" aria-controls="nav-yolo" aria-selected="false">Darknet YOLO</a>
                                     <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-dete' + index" role="tab" aria-controls="nav-dete" aria-selected="false">Facebook Detectron</a>
                                     <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-dens' + index" role="tab" aria-controls="nav-dens" aria-selected="false">Densecap</a>
+                                    <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-remap' + index" role="tab" aria-controls="nav-remap" aria-selected="false">Mimesis</a>
+                                    <a class="nav-item nav-link" data-toggle="tab" v-bind:href="'#nav-binary' + index" role="tab" aria-controls="nav-binary" aria-selected="false" onClick="insertElems();">Binary Shell</a>
                                 </div>
                             </nav>
 
@@ -407,6 +408,29 @@
 
                                 </div>
 
+                                <!--BINARY SHELL RESULTS  #copia de remap pixels# (GECID)-->
+                                <div  class="tab-pane fade"  :id="'nav-binary' + index" role="tabpanel" aria-labelledby="nav-binary">
+									<!--Visually Similar Images-->
+									<div v-if="result.remappixels.webDetection"  class="row">
+									<h5 class="text-muted pr-2 col-md-auto">Binary Shell: </h5>
+											<div :id="'div-binary' + index">
+											</div>
+									</div>
+                                </div>
+                                <!--REMAP PIXELS RESULTS (GECID)-->
+                                <div  class="tab-pane fade"  :id="'nav-remap' + index" role="tabpanel" aria-labelledby="nav-remap">
+									<!--Visually Similar Images-->
+									<div v-if="result.remappixels.webDetection"  class="row">
+									<h5 class="text-muted pr-2 col-md-auto">Mimesis: </h5>
+										<div class="col-md-auto"  v-for="(categ, categind) in result.remappixels.webDetection.visuallySimilarImages">
+											<div style="display:flex; align-items: baseline;">
+												<a v-bind:href="categ.url" data-toggle="lightbox">
+													<img class="lazy" v-lazy="categ.url" height="50">
+												</a>
+											</div>
+										</div>
+									</div>
+                                </div>
 
 
                                 <!--YOLO RESULTS-->
@@ -571,6 +595,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
 <script src="colorbar.js"></script>
+<script src="bin_man.js"></script>
 <!--//end scripts-->
 
 <script>
