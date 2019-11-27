@@ -12,7 +12,7 @@ const vm = new Vue({
         collresults: [],
         value: 0,
         search: '',
-        lowPoint: 1,
+        lowPoint: 34,
         highPoint: 3,
         turkResults: [],
         workResults: [],
@@ -93,3 +93,6 @@ const vm = new Vue({
         }
     }
 });
+
+//initialize page on collection 34
+vm.changeCollection()
