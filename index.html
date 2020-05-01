@@ -450,13 +450,25 @@
                                                 <h5 class="text-muted"> Celebrities: </h5>
                                             </div>
                                             <div v-for="region in result.clarifai.celebrities.regions" >
-                                            <div  v-for="concepts in region.data.face.identity.concepts">
-                                                <div v-if="concepts.value > 0.05" style="display:flex; align-items: baseline;">
-                                                    <h5 > {{concepts.name}} </h5>
-                                                    <span class="badge badge-info ml-2">{{concepts.value | toPercentage}}</span>
+                                                <div v-for="region in result.clarifai.celebrities.regions" >
+                                                    <!-- Correction for ClarifAI json update -->
+                                                    <div v-if="region.data.face">
+                                                        <div  v-for="concepts in region.data.face.identity.concepts">
+                                                            <div v-if="concepts.value > 0.05" style="display:flex; align-items: baseline;">
+                                                                <h5 > {{concepts.name}} </h5>
+                                                                <span class="badge badge-info ml-2">{{concepts.value | toPercentage}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div v-else>
+                                                        <div  v-for="concepts in region.data.concepts">
+                                                            <div v-if="concepts.value > 0.05" style="display:flex; align-items: baseline;">
+                                                                <h5 > {{concepts.name}} </h5>
+                                                                <span class="badge badge-info ml-2">{{concepts.value | toPercentage}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-
-                                            </div>
                                             </div>
                                         </div>
 
@@ -496,9 +508,18 @@
                                             </div>
                                             <div class="row" v-for="(region, index) in result.clarifai.demographics.regions" >
                                                 <h5 class="text-warning"> Pessoa {{index+1}}:</h5>
-                                                <div  v-for="concepts in region.data.face.multicultural_appearance.concepts" style="display:flex; align-items: baseline;">
+                                                <!-- Correction for ClarifAI json update -->
+                                                <div v-if="region.data.face">
+                                                    <div  v-for="concepts in region.data.face.multicultural_appearance.concepts" style="display:flex; align-items: baseline;">
                                                         <h5 > {{concepts.name}} </h5>
                                                         <span class="badge badge-info ml-2">{{concepts.value | toPercentage}}</span>
+                                                    </div>
+                                                </div>
+                                                <div v-else>
+                                                    <div  v-for="concepts in region.data.concepts" style="display:flex; align-items: baseline;">
+                                                        <h5 > {{concepts.name}} </h5>
+                                                        <span class="badge badge-info ml-2">{{concepts.value | toPercentage}}</span>
+                                                    </div>
                                                 </div>
                                                 <hr>
                                             </div>
