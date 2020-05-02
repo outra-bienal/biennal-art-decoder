@@ -46,7 +46,7 @@ const vm = new Vue({
                 this.results =  preRes;
             }).catch( error => { console.log(error); });
 
-        }
+        },
     },
     filters: {
         toPercentage: function (value) {
